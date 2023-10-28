@@ -8,13 +8,13 @@ import (
 
 func Post(url string, body interface{}) (*http.Response, error) {
 
-	j, err := json.Marshal(body)
+	marshal, err := json.Marshal(body)
 	if err != nil {
 		panic(any(err))
 	}
 
-	b := []byte(j)
+	byteArr := []byte(marshal)
 
-	return http.Post(url, "application/json", bytes.NewBuffer(b))
+	return http.Post(url, "application/json", bytes.NewBuffer(byteArr))
 
 }
